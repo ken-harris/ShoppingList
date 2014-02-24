@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+    <EditText
+        android:id="@+id/itemText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/itemName"
+        android:ems="10" 
+        android:singleLine="true"
+        android:nextFocusDown="@+id/quantityText"
+        style="@style/AppText">
+        <requestFocus/>
+        </EditText>
+
+    <EditText
+        android:id="@+id/quantityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/quantity"
+        android:ems="10"
+        android:nextFocusLeft="@+id/quantitySpinner"
+        android:nextFocusDown="@+id/quantitySpinner"
+        android:nextFocusUp="@+id/quantitySpinner"
+        android:nextFocusRight="@+id/quantitySpinner"
+        android:nextFocusForward="@+id/quantitySpinner"
+        android:singleLine="true"
+        android:inputType="numberDecimal"
+        style="@style/AppText"/>
+
+    <Spinner
+        android:id="@+id/quantitySpinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:entries="@array/quantity_types"
+        android:prompt="@string/quantityType"/>
+</merge>

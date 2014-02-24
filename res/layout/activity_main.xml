@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/searchArea"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+
+        <EditText
+            android:id="@+id/searchField"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:focusable="false"
+            android:hint="@string/search"
+            android:ems="10" >
+
+            
+        </EditText>
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+            android:id="@+id/addButtonArea"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"            
+            android:layout_height="wrap_content" 
+            android:layout_above="@id/searchArea"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"                
+                android:text="@string/addButton"
+                style="@style/ButtonText"
+                android:background="@drawable/button_background"
+                android:textColor="@drawable/button_text_color"
+                android:onClick="addButtonClick"
+                
+                >                
+            </Button>
+        </RelativeLayout>
+    
+	<ScrollView 
+	    android:id="@+id/scrollView"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@id/addButtonArea"
+	    android:layout_alignParentTop="true">
+	    
+	    <LinearLayout
+        android:id="@+id/dataContainer"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+        >
+
+        <com.goesll.shoppinglist.Item 
+            android:id="@+id/item1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"/>
+        
+
+    </LinearLayout>
+	    
+	</ScrollView>
+    
+
+</RelativeLayout>
