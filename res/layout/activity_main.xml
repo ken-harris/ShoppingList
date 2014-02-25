@@ -25,33 +25,11 @@
 
     </RelativeLayout>
     
-    <RelativeLayout
-            android:id="@+id/addButtonArea"
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"            
-            android:layout_height="wrap_content" 
-            android:layout_above="@id/searchArea"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"                
-                android:text="@string/addButton"
-                style="@style/ButtonText"
-                android:background="@drawable/button_background"
-                android:textColor="@drawable/button_text_color"
-                android:onClick="addButtonClick"
-                
-                >                
-            </Button>
-        </RelativeLayout>
-    
 	<ScrollView 
 	    android:id="@+id/scrollView"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_above="@id/addButtonArea"
+	    android:layout_above="@id/searchArea"
 	    android:layout_alignParentTop="true">
 	    
 	    <LinearLayout
@@ -59,16 +37,8 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"        
-        >
+        />
 
-        <com.goesll.shoppinglist.Item 
-            android:id="@+id/item1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"/>
-        
-
-    </LinearLayout>
-	    
 	</ScrollView>
     
 
