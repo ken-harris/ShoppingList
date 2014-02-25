@@ -97,6 +97,32 @@ public class Item extends LinearLayout{
 		return quantitySpinner;
 	}
 	
+	@Override
+	public int hashCode(){
+		int hash = 1;
+		hash = hash * 17 + itemText.getText().toString().hashCode();
+		hash = hash * 31 + quantityText.getText().toString().hashCode();
+		hash = hash * 7 + quantitySpinner.getSelectedItem().toString().hashCode();
+		return hash;
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		if(obj == null)
+			return false;
+		if(obj == this)
+			return true;
+		if(!(obj instanceof Item))
+			return false;
+		
+		Item it = (Item)obj;
+		if(it.getItemText().getText().toString().equalsIgnoreCase(itemText.getText().toString())){
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public String toString(){
 		return getItemText().getText().toString()+ "," + getQuantityText().getText().toString() + "," + getQuantitySpinner().getSelectedItem().toString();
 	}

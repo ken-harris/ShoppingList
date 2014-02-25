@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -35,6 +37,11 @@ import android.widget.Spinner;
  * - Get Search up and running to search through the rows for all the text the user types in.
  *    - Should auto filter?
  *    - Is this useful? 
+ * - Save dialog shows up once. After that it uses that name every time the user hits save.
+ */
+
+/*
+ * Current issue: Merging the Items together.
  */
 
 public class MainActivity extends Activity {
@@ -79,6 +86,31 @@ public class MainActivity extends Activity {
 	 */
 	
 	public void doneButtonClick(View v){
+		//saveButtonClick(v);
+		ArrayList<Item> itemArray = getListItems();
+		if(itemArray.size() > 0){
+			
+			for(int j = 0; j < itemArray.size(); j++){
+				Item firstItem = itemArray.get(j);
+				for(int i = j+1; i < itemArray.size(); i++){
+					if(firstItem.equals(itemArray.get(i))){
+						// This means the item names are equal to each other
+						System.out.println(firstItem + " equals " + itemArray.get(i));
+					}
+				}
+			}
+			
+			System.out.println(itemArray);
+			Collections.sort(itemArray, new Comparator<Item>(){
+
+				@Override
+				public int compare(Item item1, Item item2) {
+					return item1.getItemText().getText().toString().compareTo(item2.getItemText().getText().toString());
+				}});
+			System.out.println(itemArray);
+		} else {
+			// No items entered???
+		}
 		
 	}
 	
@@ -136,8 +168,8 @@ public class MainActivity extends Activity {
 					String time = Long.toString(Calendar.getInstance().getTimeInMillis());
 					outputStream.write(time.getBytes());
 					outputStream.write("\n".getBytes());
-					for(Object s:getListItems()){
-						outputStream.write(((String)s).getBytes());
+					for(Object s:getListItems().toArray()){
+						outputStream.write(((Item)s).toString().getBytes());
 						outputStream.write("\n".getBytes());
 					}
 					outputStream.close();
@@ -158,10 +190,10 @@ public class MainActivity extends Activity {
 		alert.show();
 	}
 	
-	private Object[] getListItems(){
+	private ArrayList<Item> getListItems(){
 		LinearLayout layout = (LinearLayout)this.findViewById(R.id.dataContainer);
 		System.out.println("number of items: " + layout.getChildCount());
-		ArrayList<String> strArray = new ArrayList<String>();
+		ArrayList<Item> strArray = new ArrayList<Item>();
 		for(int i = 0; i < layout.getChildCount(); i++){
 			Item item = (Item)layout.getChildAt(i);
 			
@@ -169,10 +201,10 @@ public class MainActivity extends Activity {
 				System.out.println("Empty row found!");
 			} else {
 				System.out.println(item);
-				strArray.add(item.toString());
+				strArray.add(item);
 			}		
 		}
-		return strArray.toArray();
+		return strArray;
 	}
 	
 	private void setupAndAddItem(Item i){
