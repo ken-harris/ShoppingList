@@ -8,6 +8,8 @@
     <string name="quantity">Quantity:</string>
     <string name="quantityType">Qty Type:</string>
     <string name="addButton">+Add</string>
+    <string name="saveButton">SAVE</string>
+    <string name="doneButton">FINISH</string>
     <string-array name="quantity_types">
         <item>Select Qty:</item>
         <item>Ounce(s)</item>

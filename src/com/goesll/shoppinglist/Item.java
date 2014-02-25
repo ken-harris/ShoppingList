@@ -96,4 +96,8 @@ public class Item extends LinearLayout{
 	public Spinner getQuantitySpinner(){
 		return quantitySpinner;
 	}
+	
+	public String toString(){
+		return getItemText().getText().toString()+ "," + getQuantityText().getText().toString() + "," + getQuantitySpinner().getSelectedItem().toString();
+	}
 }

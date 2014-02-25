@@ -14,17 +14,12 @@
         </EditText>
 
     <EditText
-        android:id="@+id/quantityText"
+        android:id="@id/quantityText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:hint="@string/quantity"
         android:ems="10"
-        android:nextFocusLeft="@+id/quantitySpinner"
-        android:nextFocusDown="@+id/quantitySpinner"
-        android:nextFocusUp="@+id/quantitySpinner"
-        android:nextFocusRight="@+id/quantitySpinner"
-        android:nextFocusForward="@+id/quantitySpinner"
         android:singleLine="true"
         android:imeOptions="actionNext"
         android:inputType="numberDecimal"
