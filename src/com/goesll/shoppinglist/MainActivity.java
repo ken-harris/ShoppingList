@@ -44,6 +44,11 @@ import android.widget.Spinner;
  * Current issue: Merging the Items together.
  */
 
+/*
+ * Future problem?
+ * Too many saved files, not enough space? What is max space for use in an app?
+ */
+
 public class MainActivity extends Activity {
 
 	private ArrayAdapter<?> adapter;
