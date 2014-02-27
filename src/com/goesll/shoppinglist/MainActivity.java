@@ -27,6 +27,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 /*
  * TODO:
@@ -38,10 +39,20 @@ import android.widget.Spinner;
  *    - Should auto filter?
  *    - Is this useful? 
  * - Save dialog shows up once. After that it uses that name every time the user hits save.
+ * 
+ * There will be 4 Views total:
+ * 	Main View -- Contains options for User to either Create a new list, or View/Edit previous lists.
+ *  Create View -- Allows user to type in their shopping list.
+ *     -Allow user to select whether or not they want it to merge items together (maybe they want to preserve their sort)
+ *  Shopping View -- Loads up the list and allows user to click the row when they have purchased/placed item in their cart.
+ *     -Allow user to either strikethrough when selected or completely remove the row.
+ *     -Sort the row if strike through? Move found items to the bottom?
+ *     -Allow user to sort the list by alphabet or keep it the way they want?
+ *  List View -- View that allows a user to open/delete/rename
  */
 
 /*
- * Current issue: Merging the Items together.
+ * Current issue: Create new Activity that views the saved files. Allows for a user to open/delete/rename.
  */
 
 /*
@@ -94,13 +105,16 @@ public class MainActivity extends Activity {
 		//saveButtonClick(v);
 		ArrayList<Item> itemArray = getListItems();
 		if(itemArray.size() > 0){
-			
+			int arrayLength = itemArray.size();
 			for(int j = 0; j < itemArray.size(); j++){
 				Item firstItem = itemArray.get(j);
-				for(int i = j+1; i < itemArray.size(); i++){
+				for(int i = j+1; i < arrayLength; i++){
 					if(firstItem.equals(itemArray.get(i))){
 						// This means the item names are equal to each other
 						System.out.println(firstItem + " equals " + itemArray.get(i));
+						firstItem = firstItem.merge(itemArray.get(i));
+						System.out.println("After merge: " + firstItem);
+						itemArray.remove(i);
 					}
 				}
 			}
@@ -178,6 +192,7 @@ public class MainActivity extends Activity {
 						outputStream.write("\n".getBytes());
 					}
 					outputStream.close();
+					Toast.makeText(getApplicationContext(), "Saved " + fileName + ".", Toast.LENGTH_SHORT).show();
 					
 				} catch(Exception e){
 					e.printStackTrace();

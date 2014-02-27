@@ -97,6 +97,50 @@ public class Item extends LinearLayout{
 		return quantitySpinner;
 	}
 	
+	/*
+	 * merge(Item item2)
+	 * 
+	 * Merges the passed in Item to the first Item
+	 */
+	
+	public Item merge(Item item2){
+		// Easiest problem is: Quantity Type is the same, so just combine the Quantity Amount.
+		if(this.quantitySpinner.getSelectedItem().toString().equalsIgnoreCase(item2.getQuantitySpinner().getSelectedItem().toString())){
+			double quantity = Double.parseDouble(this.getQuantityText().getText().toString());
+			quantity += Double.parseDouble(item2.getQuantityText().getText().toString());
+			this.getQuantityText().setText(Double.toString(quantity));
+			
+		} else {
+			// This means the quantities are separate. Grab both and figure out the largest, convert the smallest to largest, and then merge them.
+			String quantity1 = this.getQuantitySpinner().getSelectedItem().toString();
+			int firstSpinnerPosition = this.getQuantitySpinner().getSelectedItemPosition();
+			String quantity2 = item2.getQuantitySpinner().getSelectedItem().toString();
+			int secondSpinnerPosition = item2.getQuantitySpinner().getSelectedItemPosition();
+			String largest = Conversion.largestQuantity(quantity1, quantity2);
+			if(largest.equals(quantity1)){
+				double quantity = (Double.parseDouble(this.getQuantityText().getText().toString()));
+				quantity += Conversion.convertTo(quantity2, item2.getQuantityText().getText().toString(), quantity1);
+				this.getQuantityText().setText(Double.toString(quantity));
+				this.getQuantitySpinner().setSelection(firstSpinnerPosition); // Not needed?
+				
+			} else if(largest.equals(quantity2)){
+				double quantity = (Double.parseDouble(this.getQuantityText().getText().toString()));
+				quantity += Conversion.convertTo(quantity1, this.getQuantityText().getText().toString(), quantity2);
+				this.getQuantityText().setText(Double.toString(quantity));
+				this.getQuantitySpinner().setSelection(secondSpinnerPosition);
+				
+			} else {
+				// Either no conversion, no quantity amount selected, or Eggs/Cartons
+				if((quantity1.contains("Egg") && quantity2.contains("Carton")) | (quantity1.contains("Carton") && quantity2.contains("Egg"))){
+					// If one is Egg and the other is Carton then convert both to Carton, and round up.(?)					
+				}
+			}
+
+		}
+		
+		return this;		
+	}
+	
 	@Override
 	public int hashCode(){
 		int hash = 1;

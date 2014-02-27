@@ -2,6 +2,141 @@ package com.goesll.shoppinglist;
 
 public class Conversion {
 
+	// Gallon > Liter > Quart > Pint > Cup > Ounce > TableSpoon > Teaspoon
+	public static String largestQuantity(String quantity1, String quantity2){
+		
+		// Gallon is the largest
+		if(quantity1.contains("Gallon")){
+			return quantity1;
+		} else if(quantity2.contains("Gallon")){
+			return quantity2;
+		}
+		
+		// Liter is the next largest
+		if(quantity1.contains("Liter")){
+			return quantity1;
+		} else if(quantity2.contains("Liter")){
+			return quantity2;
+		}
+		
+		// Quart is the next largest
+		if(quantity1.contains("Quart")){
+			return quantity1;
+		} else if(quantity2.contains("Quart")){
+			return quantity2;
+		}
+		
+		// Pint is the next largest
+		if(quantity1.contains("Pint")){
+			return quantity1;
+		} else if(quantity2.contains("Pint")){
+			return quantity2;
+		}
+		
+		// Cup is the next largest
+		if(quantity1.contains("Cup")){
+			return quantity1;
+		} else if(quantity2.contains("Cup")){
+			return quantity2;
+		}
+		
+		// Ounce is the next largest
+		if(quantity1.contains("Ounce")){
+			return quantity1;
+		} else if(quantity2.contains("Ounce")){
+			return quantity2;
+		}
+		
+		// Tablespoon is the next largest
+		if(quantity1.contains("Tablespoon")){
+			return quantity1;
+		} else if(quantity2.contains("Tablespoon")){
+			return quantity2;
+		}
+		
+		// Teaspoon is the smallest
+		if(quantity1.contains("Teaspoon")){
+			return quantity1;
+		} else if(quantity2.contains("Teaspoon")){
+			return quantity2;
+		}
+		
+		return "";
+	}
+	
+	// Gallon > Liter > Quart > Pint > Cup > Ounce > TableSpoon > Teaspoon
+	public static double convertTo(String quantityName, String quantityValue, String largerQuantity){
+		if(quantityName.contains("Liter")){
+			return litersToGallon(Double.parseDouble(quantityValue));
+		} else if(quantityName.contains("Quart")){
+			if(largerQuantity.contains("Liter")){
+				return quartsToLiter(Double.parseDouble(quantityValue));
+			} else {
+				return quartsToGallon(Double.parseDouble(quantityValue));
+			}
+		} else if(quantityName.contains("Pint")){
+			if(largerQuantity.contains("Quart")){
+				return pintsToQuart(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Liter")){
+				return pintsToLiter(Double.parseDouble(quantityValue));
+			} else {
+				return pintsToGallon(Double.parseDouble(quantityValue));
+			}
+		} else if(quantityName.contains("Cup")){
+			if(largerQuantity.contains("Pint")){
+				return cupsToPint(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Quart")){
+				return cupsToQuart(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Liter")){
+				return cupsToLiter(Double.parseDouble(quantityValue));
+			} else {
+				return cupsToGallon(Double.parseDouble(quantityValue));
+			}
+		} else if(quantityName.contains("Ounce")){
+			if(largerQuantity.contains("Cup")){
+				return ouncesToCup(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Pint")){
+				return ouncesToPint(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Quart")){
+				return ouncesToQuart(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Liter")){
+				return ouncesToLiter(Double.parseDouble(quantityValue));
+			} else {
+				return ouncesToGallon(Double.parseDouble(quantityValue));
+			}
+		} else if(quantityName.contains("Tablespoon")){
+			if(largerQuantity.contains("Ounce")){
+				return tablespoonsToOunce(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Cup")){
+				return tablespoonsToCup(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Pint")){
+				return tablespoonsToPint(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Quart")){
+				return tablespoonsToQuart(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Liter")){
+				return tablespoonsToLiter(Double.parseDouble(quantityValue));
+			} else {
+				return tablespoonsToGallon(Double.parseDouble(quantityValue));
+			}
+		} else {
+			if(largerQuantity.contains("Tablespoon")){
+				return teaspoonsToTableSpoon(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Ounce")){
+				return teaspoonsToOunce(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Cup")){
+				return teaspoonsToCup(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Pint")){
+				return teaspoonsToPint(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Quart")){
+				return teaspoonsToQuart(Double.parseDouble(quantityValue));
+			} else if(largerQuantity.contains("Liter")){
+				return teaspoonsToLiter(Double.parseDouble(quantityValue));
+			} else {
+				return teaspoonsToGallon(Double.parseDouble(quantityValue));
+			}
+		}		
+	}
+	
 	// CUPS to --
 	
 	public static double cupsToGallon(double cups){
@@ -68,6 +203,30 @@ public class Conversion {
 	
 	public static double ouncesToPint(double ounces){
 		return ounces * 0.0625;
+	}
+	
+	// PINTS to --
+	
+	public static double pintsToGallon(double pints){
+		return pints * 0.125;
+	}
+	public static double pintsToQuart(double pints){
+		return pints * 0.5;
+	}
+	public static double pintsToCup(double pints){
+		return pints * 2;
+	}
+	public static double pintsToOunce(double pints){
+		return pints * 16;
+	}
+	public static double pintsToTableSpoon(double pints){
+		return pints * 32;
+	}
+	public static double pintsToTeaSpoon(double pints){
+		return pints * 96;
+	}
+	public static double pintsToLiter(double pints){
+		return pints * 0.473176;
 	}
 	
 	// POUNDS to --
@@ -137,6 +296,8 @@ public class Conversion {
 	}
 	
 	// GALLONS TO --
+	
+
 	
 	public static double gallonsToQuart(double gallons){
 		return gallons * 4;
