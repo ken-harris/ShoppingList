@@ -10,6 +10,8 @@
     <string name="addButton">+Add</string>
     <string name="saveButton">SAVE</string>
     <string name="doneButton">FINISH</string>
+    <string name="createButton">Create New List...</string>
+    <string name="viewButton">View Saved List...</string>
     <string-array name="quantity_types">
         <item>Select Qty:</item>
         <item>Ounce(s)</item>

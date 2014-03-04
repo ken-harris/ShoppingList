@@ -22,7 +22,7 @@ public class ItemSelectedListener implements OnItemSelectedListener {
 			item.setAlreadyBuilt(true);
 		} else {
 			if(!item.hasAddedRow()){
-				((MainActivity)context).addRow();
+				((CreateActivity)context).addRow();
 				item.setAddedRow(true);
 			}
 		}		
