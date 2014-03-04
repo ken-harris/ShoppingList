@@ -53,7 +53,7 @@ import android.widget.Toast;
  */
 
 /*
- * Current issue: Create new Activity that views the saved files. Allows for a user to open/delete/rename.
+ * Current issue: Have a user click on each of their lists and open it up in either view/edit mode.
  */
 
 /*
@@ -69,6 +69,10 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);	
 		addListenerToButtons();
 	}
+	
+	/*
+	 * Adds a listener to each of the buttons on the page.
+	 */
 	
 	public void addListenerToButtons(){
 		final Context context = this;

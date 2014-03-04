@@ -97,24 +97,6 @@ public class CreateActivity extends Activity{
 	 *  - Allow user to name or use default (but include date)	
 	 */
 	
-	/*
-	 * To load the data:
-	 * 
-	 * StringBuilder sb = new StringBuilder();
-				
-				try{
-					FileInputStream fis = openFileInput(fileName);
-					BufferedReader read = new BufferedReader(new InputStreamReader(fis));
-					String line = null;
-					while((line = read.readLine()) != null){
-						sb.append(line).append("\n");
-					}
-					fis.close();
-					
-				} catch (Exception e){
-					
-				}
-	 */
 	public void saveButtonClick(View v){
 		
 		// Make a simple alert dialog

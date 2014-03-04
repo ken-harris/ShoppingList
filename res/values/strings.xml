@@ -12,6 +12,8 @@
     <string name="doneButton">FINISH</string>
     <string name="createButton">Create New List...</string>
     <string name="viewButton">View Saved List...</string>
+    <string name="listName">List Name:</string>
+    <string name="date">Date Created:</string>
     <string-array name="quantity_types">
         <item>Select Qty:</item>
         <item>Ounce(s)</item>
