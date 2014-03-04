@@ -1,4 +1,4 @@
-package com.goesll.shoppinglist;
+package com.goesll.shoppinglist.helper;
 
 public class Conversion {
 
