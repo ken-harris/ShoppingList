@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.util.Date;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -15,6 +17,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ViewActivity extends Activity{
 
@@ -44,6 +47,7 @@ public class ViewActivity extends Activity{
 	}
 	
 	private void displayData(){
+		final Context context = this;
 		int colorCode = 0;
 		LinearLayout layout = (LinearLayout)findViewById(R.id.listArea);
 		File fileDir = getFilesDir();
@@ -54,7 +58,7 @@ public class ViewActivity extends Activity{
 			displayNoData();
 		}
 		
-		for(File file : files){
+		for(final File file : files){
 			LinearLayout linearLayout = new LinearLayout(this);
 			linearLayout.setPadding(5, 10, 5, 10);
 			
@@ -75,7 +79,9 @@ public class ViewActivity extends Activity{
 				
 				@Override
 				public void onClick(View v) {
-					System.out.println("Clicked!");
+					Intent intent = new Intent(context, ShopActivity.class);
+					intent.putExtra("ListFile", file);
+                    startActivity(intent);
 				}
 			});
 			
@@ -89,7 +95,9 @@ public class ViewActivity extends Activity{
 				
 				@Override
 				public void onClick(View v) {
-					System.out.println("Clicked!");
+					Intent intent = new Intent(context, ShopActivity.class);
+					intent.putExtra("ListFile", file);
+                    startActivity(intent);
 				}
 			});
 			
@@ -114,7 +122,6 @@ public class ViewActivity extends Activity{
 			linearLayout.addView(fileNameTextView);
 			linearLayout.addView(dateTextView);
 			layout.addView(linearLayout);
-			System.out.println(file.getAbsolutePath());
 		}
 	}
 	

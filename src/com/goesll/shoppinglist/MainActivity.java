@@ -53,7 +53,8 @@ import android.widget.Toast;
  */
 
 /*
- * Current issue: Have a user click on each of their lists and open it up in either view/edit mode.
+ * Current issue: Fix orientation issue.
+ * http://developer.android.com/guide/topics/resources/runtime-changes.html
  */
 
 /*

@@ -30,6 +30,8 @@
         <item>Can(s)</item>
         <item>Carton(s)</item>
         <item>Loaves</item>
+        <item>Box(es)</item>
+        <item>Package(s)</item>
     </string-array>
 
 </resources>
